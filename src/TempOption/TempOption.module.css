@@ -1,0 +1,21 @@
+.button_container{
+    width: 100%;
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    /* border: 1px solid pink; */
+}
+
+.temp_button{
+    height: 40px;
+    width: 40px;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.active_btn{
+    color: var(--white);
+    background-color: rgba(88, 86, 118, 1);
+}
