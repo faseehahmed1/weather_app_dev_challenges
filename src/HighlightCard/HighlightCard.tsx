@@ -28,7 +28,7 @@ export default function HighlightCard({data, unit}: HighlightCardProps) {
     <div className={classes.outer_container}>
       {renderHighlight("Wind Status", speed, unit === "metric" ? "m/s" : "mph")}
       {renderHighlight("Humidity", humidity, "%")}
-      {renderHighlight("Visibility", visibility, unit === "metric" ? "km" : "miles")}
+      {renderHighlight("Visibility", visibility, "m")}
       {renderHighlight("Air Pressure", pressure, "mb")}
     </div>
   );

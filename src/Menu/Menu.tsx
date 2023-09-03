@@ -67,12 +67,12 @@ export default function Menu({
               <h1>{Math.round(temp)}</h1>
               <h4>{unit === "metric" ? "°C" : "°F"}</h4>
             </div>
-            <h3>{description.at(0).toUpperCase() + description.slice(1)}</h3>
+            <h3>{description[0].toUpperCase() + description.slice(1)}</h3>
             <h5>Today · {newDateFormat}</h5>
             <div className={classes.location_container}>
               <span className="material-symbols-outlined">location_on</span>
               <h5>
-                {locationInput.at(0).toUpperCase() + locationInput.slice(1)}
+                {locationInput[0].toUpperCase() + locationInput.slice(1)}
               </h5>
             </div>
           </div>
@@ -102,7 +102,7 @@ export default function Menu({
             </span>
             <button className={classes.search_btn} onClick={()=>setTriggerFetch((prev)=>!prev)}>Search</button>
           </div>
-          {inError && <p>No Results Found 😕!</p>}
+          {inError && <p className={classes.error}>No Results Found 😕!</p>}
         </div>
       )}
     </div>

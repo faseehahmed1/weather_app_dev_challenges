@@ -90,7 +90,8 @@
 }
 
 /* Side Menu */
-.menu_container{
+.error{
+    padding: 20px;
 }
 
 .close_btn{
