@@ -3,7 +3,6 @@
     display: flex;
     gap: 10px;
     justify-content: flex-end;
-    /* border: 1px solid pink; */
 }
 
 .temp_button{
@@ -15,7 +14,7 @@
     justify-content: center;
 }
 
-.active_btn{
+.non_active_btn{
     color: var(--white);
     background-color: rgba(88, 86, 118, 1);
 }

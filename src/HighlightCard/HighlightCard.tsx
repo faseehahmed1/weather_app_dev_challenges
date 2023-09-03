@@ -1,36 +1,35 @@
 import classes from "./HighlightCard.module.css";
+import { RootAPI } from "../Interface/APIInterface";
 
-export default function HighlightCard() {
+interface HighlightCardProps {
+  data: RootAPI[];
+  unit: string;
+}
+
+export default function HighlightCard({data, unit}: HighlightCardProps) {
+
+  const {
+    main: { pressure, humidity },
+    visibility,
+    wind: { speed },
+  } = data[0];
+
+  const renderHighlight = (label: string, value: number, unitLabel: string) => (
+    <div className={classes.container}>
+      <p>{label}</p>
+      <div className={classes.number_container}>
+        <h2>{value}</h2>
+        <h3>{unitLabel}</h3>
+      </div>
+    </div>
+  );
+
   return (
     <div className={classes.outer_container}>
-      <div className={classes.container}>
-        <p>Wind Status</p>
-        <div className={classes.number_container}>
-          <h2>7</h2>
-          <h3>mph</h3>
-        </div>
-      </div>
-      <div className={classes.container}>
-        <p>Humidity</p>
-        <div className={classes.number_container}>
-          <h2>8</h2>
-          <h3>%</h3>
-        </div>
-      </div>
-      <div className={classes.container}>
-        <p>Visibilty</p>
-        <div className={classes.number_container}>
-          <h2>64</h2>
-          <h3>miles</h3>
-        </div>
-      </div>
-      <div className={classes.container}>
-        <p>Air Pressure</p>
-        <div className={classes.number_container}>
-          <h2>998</h2>
-          <h3>mb</h3>
-        </div>
-      </div>
+      {renderHighlight("Wind Status", speed, unit === "metric" ? "m/s" : "mph")}
+      {renderHighlight("Humidity", humidity, "%")}
+      {renderHighlight("Visibility", visibility, unit === "metric" ? "km" : "miles")}
+      {renderHighlight("Air Pressure", pressure, "mb")}
     </div>
   );
 }

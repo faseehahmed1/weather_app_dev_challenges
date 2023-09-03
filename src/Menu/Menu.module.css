@@ -11,12 +11,10 @@
 @media (min-width: 768px){
     .container{
     max-width: 375px;
-    /* border: 1px solid pink; */
     height: unset;
     }
 
     .info_container{
-        /* border: 1px solid green; */
         max-height: 370px;
     }
 }
@@ -93,7 +91,6 @@
 
 /* Side Menu */
 .menu_container{
-    /* border: 1px solid red; */
 }
 
 .close_btn{

@@ -1,31 +1,38 @@
-import classes from './TempOption.module.css'
-import { useState } from 'react';
-import clsx
- from 'clsx';
-export default function TempOption(){
-    const [active, setActive] = useState(false)
+import classes from "./TempOption.module.css";
+import { useState } from "react";
+import clsx from "clsx";
 
-    const buttonClass = clsx([classes.temp_button], {
-        [classes.active_btn] : active
-    })
-
-    const buttonClass2 = clsx([classes.temp_button], {
-        [classes.active_btn] : !active
-    })
-
-    function handleTempClick(e: React.MouseEvent<HTMLButtonElement>){
-        console.log(e.currentTarget.value)
-        setActive(prev=>!prev)
-    }
-
-    return(
-        <div className={classes.button_container}>
-        <button className={buttonClass2} onClick={(e)=>handleTempClick(e)} value="°C">°C</button>
-        <button className={buttonClass} onClick={(e)=>handleTempClick(e)} value="°F">°F</button>
-        </div>
-    )
+interface UnitProps {
+  setUnit: (data: string) => void;
 }
 
-/**
- * By default C is active
- * the active class switches onClick */ 
+export default function TempOption({ setUnit }: UnitProps) {
+    const [activeUnit, setActiveUnit] = useState("°C");
+
+    const buttons = [
+      { value: "°C", unitType: "metric" },
+      { value: "°F", unitType: "imperial" },
+    ];
+
+    function handleTempClick(value: string, unitType: string) {
+        setActiveUnit(value);
+        setUnit(unitType);
+      }
+
+  return (
+    <div className={classes.button_container}>
+    {buttons.map((btn) => (
+      <button
+        key={btn.value}
+        className={clsx(classes.temp_button, {
+          [classes.non_active_btn]: activeUnit !== btn.value,
+        })}
+        onClick={() => handleTempClick(btn.value, btn.unitType)}
+      >
+        {btn.value}
+      </button>
+    ))}
+  </div>
+  );
+}
+
